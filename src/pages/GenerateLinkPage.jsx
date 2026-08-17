@@ -104,6 +104,10 @@ export default function GenerateLinkPage() {
                 <img
                   src="/assets/golden-era-banner-generate.webp"
                   alt="My Golden Era — Senior Citizen Memory Experience. Honouring their stories. Celebrating their journey."
+                  width={848}
+                  height={241}
+                  fetchPriority="high"
+                  decoding="async"
                   className="mx-auto h-auto max-h-[clamp(50px,14vh,140px)] w-auto max-w-full rounded-2xl shadow-sm"
                 />
               </div>

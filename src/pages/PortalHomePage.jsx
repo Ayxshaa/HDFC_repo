@@ -23,6 +23,10 @@ export default function PortalHomePage() {
         <img
           src="/assets/golden-era-banner-home.webp"
           alt="My Golden Era — Senior Citizen Memory Experience. Help your customers bring a special memory from their past back to life."
+          width={1078}
+          height={438}
+          fetchPriority="high"
+          decoding="async"
           className="mx-auto h-auto max-h-[clamp(72px,22vh,220px)] w-auto max-w-full rounded-2xl shadow-sm"
         />
       </motion.div>
