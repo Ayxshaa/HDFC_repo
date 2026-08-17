@@ -49,46 +49,70 @@ export default function GenerateLinkPage() {
   };
 
   return (
-    <PageShell mainClassName="px-4 py-3">
+    <PageShell mainClassName="px-4 py-4 sm:py-6">
       <div className="w-full max-w-lg">
         <motion.button
           type="button"
           initial={{ opacity: 0, x: -8 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => navigate(ROUTES.home)}
-          className="mb-2 inline-flex items-center gap-1.5 text-xs font-medium text-hdfc-navy hover:text-hdfc-navy-dark sm:text-sm"
+          className="mb-3 inline-flex items-center gap-1.5 text-xs font-medium text-hdfc-navy hover:text-hdfc-navy-dark sm:mb-4 sm:text-sm"
         >
           <ArrowLeft aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           Back to Portal
         </motion.button>
 
-        <motion.div
-          layout
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="overflow-hidden rounded-lg border border-slate-200 bg-white p-5 sm:p-7"
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {link ? (
+        <AnimatePresence mode="wait" initial={false}>
+          {link ? (
+            <motion.div
+              key="success"
+              layout
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              className="overflow-hidden rounded-lg border border-slate-200 bg-white p-5 sm:p-7"
+            >
               <GeneratedLinkCard
-                key="success"
                 link={link}
                 copied={copied}
                 onCopy={handleCopy}
                 onReset={handleReset}
               />
-            ) : (
-              <EmployeeDetailsForm
-                key="form"
-                values={values}
-                errors={errors}
-                onFieldChange={handleFieldChange}
-                onSubmit={handleSubmit}
-              />
-            )}
-          </AnimatePresence>
-        </motion.div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="form"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            >
+              <h1 className="text-2xl font-bold leading-tight text-hdfc-navy sm:text-4xl">
+                Create Your Link
+              </h1>
+              <p className="mt-1.5 text-sm text-slate-500 sm:text-base">
+                Enter your details below to create your customer link.
+              </p>
+
+              <div className="mt-4 overflow-hidden rounded-2xl shadow-sm sm:mt-5">
+                <img
+                  src="/assets/golden-era-banner-generate.png"
+                  alt="My Golden Era — Senior Citizen Memory Experience. Honouring their stories. Celebrating their journey."
+                  className="h-auto w-full"
+                />
+              </div>
+
+              <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 sm:mt-5 sm:p-7">
+                <EmployeeDetailsForm
+                  values={values}
+                  errors={errors}
+                  onFieldChange={handleFieldChange}
+                  onSubmit={handleSubmit}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <StepIndicator

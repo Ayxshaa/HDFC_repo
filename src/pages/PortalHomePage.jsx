@@ -1,4 +1,4 @@
-import { ArrowRight, Image as ImageIcon, Link2 } from 'lucide-react';
+import { ArrowRight, Link2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,25 +11,17 @@ export default function PortalHomePage() {
 
   return (
     <PageShell mainClassName="gap-5 px-4 py-4">
-      {/* Campaign banner placeholder */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="flex w-full max-w-xl shrink-0 items-center gap-3 rounded-lg border-2 border-dashed border-hdfc-blue-100 bg-hdfc-blue-50/50 px-4 py-3 sm:gap-4 sm:px-5 sm:py-4"
+        className="w-full max-w-xl shrink-0 overflow-hidden rounded-2xl shadow-sm"
       >
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-white/80 sm:h-12 sm:w-12">
-          <ImageIcon
-            aria-hidden="true"
-            strokeWidth={1.75}
-            className="h-5 w-5 text-hdfc-navy/60 sm:h-6 sm:w-6"
-          />
-        </span>
-        <div className="text-left">
-          <p className="text-sm font-semibold uppercase tracking-wide text-hdfc-navy/70 sm:text-base">
-            Banner
-          </p>
-        </div>
+        <img
+          src="/assets/golden-era-banner-home.png"
+          alt="My Golden Era — Senior Citizen Memory Experience. Help your customers bring a special memory from their past back to life."
+          className="h-auto w-full"
+        />
       </motion.div>
 
       <div className="text-center">
@@ -39,7 +31,7 @@ export default function PortalHomePage() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-2xl font-bold leading-tight text-hdfc-navy sm:text-4xl"
         >
-          Employee Link Generation Portal
+          My Golden Era Link Portal
         </motion.h1>
         <div className="mx-auto mt-3 h-1 w-16 bg-hdfc-red" />
         <motion.p
@@ -48,8 +40,7 @@ export default function PortalHomePage() {
           transition={{ delay: 0.1, duration: 0.5 }}
           className="mx-auto mt-4 max-w-xl text-sm text-slate-600 sm:text-base"
         >
-          Generate your personalised, trackable campaign link and share it with customers — every
-          visit and CTA click gets credited to you.
+          Create your personalised link and share it with your customers.
         </motion.p>
       </div>
 
@@ -88,7 +79,7 @@ export default function PortalHomePage() {
           transition={{ delay: 0.48, duration: 0.4 }}
           className="mt-1.5 text-sm text-slate-500 sm:mt-2 sm:text-base"
         >
-          Create trackable links for HDFC Bank campaigns.
+          Create links for HDFC Bank campaigns.
         </motion.p>
 
         <motion.button
