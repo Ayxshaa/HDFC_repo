@@ -40,19 +40,19 @@ export default function GeneratedLinkCard({ link, copied, onCopy, onReset }) {
         initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.1, type: 'spring', stiffness: 260, damping: 18 }}
-        className="mx-auto flex h-[clamp(2.25rem,6vh,4rem)] w-[clamp(2.25rem,6vh,4rem)] items-center justify-center rounded-full bg-emerald-50 text-emerald-600"
+        className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 sm:h-16 sm:w-16"
       >
-        <CircleCheck aria-hidden="true" className="h-[55%] w-[55%]" />
+        <CircleCheck aria-hidden="true" className="h-7 w-7 sm:h-8 sm:w-8" />
       </motion.span>
 
-      <h1 className="mt-[clamp(0.375rem,1vh,1rem)] text-[clamp(0.9rem,2.2vh,1.25rem)] font-bold text-hdfc-navy">
+      <h1 className="mt-3 text-base font-bold text-hdfc-navy sm:mt-4 sm:text-xl">
         Your Trackable Link is Ready
       </h1>
-      <p className="mt-[clamp(0.125rem,0.4vh,0.25rem)] text-[clamp(0.65rem,1.4vh,0.875rem)] text-slate-500">
+      <p className="mt-1 text-xs text-slate-500 sm:text-sm">
         Share this link with your customers to start tracking visits.
       </p>
 
-      <div className="mt-[clamp(0.5rem,1.4vh,1.25rem)] flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-[clamp(0.4rem,1vh,0.625rem)] text-left">
+      <div className="mt-4 flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-left sm:mt-5">
         <input
           readOnly
           value={link}
@@ -74,13 +74,13 @@ export default function GeneratedLinkCard({ link, copied, onCopy, onReset }) {
         </button>
       </div>
 
-      <div className="mt-[clamp(0.375rem,1vh,1rem)] flex flex-col gap-2 sm:flex-row sm:gap-3">
+      <div className="mt-3 flex flex-col gap-2 sm:mt-4 sm:flex-row sm:gap-3">
         <motion.button
           type="button"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onCopy}
-          className="flex flex-1 items-center justify-center gap-2 rounded-md bg-hdfc-navy py-[clamp(0.5rem,1.2vh,0.625rem)] text-[clamp(0.75rem,1.6vh,0.875rem)] font-semibold text-white transition-colors hover:bg-hdfc-navy-dark"
+          className="flex flex-1 items-center justify-center gap-2 rounded-md bg-hdfc-navy py-2.5 text-sm font-semibold text-white transition-colors hover:bg-hdfc-navy-dark"
         >
           {copied ? (
             <Check aria-hidden="true" className="h-4 w-4" />
@@ -95,7 +95,7 @@ export default function GeneratedLinkCard({ link, copied, onCopy, onReset }) {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleShare}
-          className="flex flex-1 items-center justify-center gap-2 rounded-md border border-hdfc-navy py-[clamp(0.5rem,1.2vh,0.625rem)] text-[clamp(0.75rem,1.6vh,0.875rem)] font-semibold text-hdfc-navy transition-colors hover:bg-hdfc-blue-50"
+          className="flex flex-1 items-center justify-center gap-2 rounded-md border border-hdfc-navy py-2.5 text-sm font-semibold text-hdfc-navy transition-colors hover:bg-hdfc-blue-50"
         >
           <Share2 aria-hidden="true" className="h-4 w-4" />
           Share Link
@@ -105,7 +105,7 @@ export default function GeneratedLinkCard({ link, copied, onCopy, onReset }) {
       <button
         type="button"
         onClick={onReset}
-        className="mt-[clamp(0.375rem,1vh,1rem)] inline-flex items-center gap-1.5 text-[clamp(0.7rem,1.4vh,0.875rem)] font-medium text-slate-500 hover:text-hdfc-navy"
+        className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-hdfc-navy sm:text-sm"
       >
         <RotateCcw aria-hidden="true" className="h-3.5 w-3.5" />
         Generate another link

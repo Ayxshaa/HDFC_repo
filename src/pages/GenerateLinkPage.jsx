@@ -49,17 +49,14 @@ export default function GenerateLinkPage() {
   };
 
   return (
-    <PageShell
-      scroll={false}
-      mainClassName="gap-0 px-4 py-[clamp(0.375rem,1.4vh,1rem)] min-h-0"
-    >
-      <div className="flex min-h-0 w-full max-w-lg shrink flex-col">
+    <PageShell mainClassName="px-4 py-4 sm:py-6">
+      <div className="w-full max-w-lg">
         <motion.button
           type="button"
           initial={{ opacity: 0, x: -8 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={() => navigate(ROUTES.home)}
-          className="mb-[clamp(0.375rem,1vh,1rem)] inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-hdfc-navy hover:text-hdfc-navy-dark sm:text-sm"
+          className="mb-3 inline-flex items-center gap-1.5 text-xs font-medium text-hdfc-navy hover:text-hdfc-navy-dark sm:mb-4 sm:text-sm"
         >
           <ArrowLeft aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
           Back to Portal
@@ -73,7 +70,7 @@ export default function GenerateLinkPage() {
               initial={{ opacity: 0, y: 20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="min-h-0 overflow-hidden rounded-lg border border-slate-200 bg-white p-[clamp(0.75rem,2.2vh,1.75rem)]"
+              className="overflow-hidden rounded-lg border border-slate-200 bg-white p-5 sm:p-7"
             >
               <GeneratedLinkCard
                 link={link}
@@ -89,18 +86,15 @@ export default function GenerateLinkPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="flex min-h-0 flex-col gap-[clamp(0.375rem,1.2vh,1.25rem)]"
             >
-              <div className="shrink-0">
-                <h1 className="text-[clamp(1.1rem,3vh,2.25rem)] font-bold leading-tight text-hdfc-navy">
-                  Create Your Link
-                </h1>
-                <p className="mt-[clamp(0.125rem,0.6vh,0.375rem)] text-[clamp(0.7rem,1.6vh,1rem)] text-slate-500">
-                  Enter your details below to create your customer link.
-                </p>
-              </div>
+              <h1 className="text-2xl font-bold leading-tight text-hdfc-navy sm:text-4xl">
+                Create Your Link
+              </h1>
+              <p className="mt-1.5 text-sm text-slate-500 sm:text-base">
+                Enter your details below to create your customer link.
+              </p>
 
-              <div className="min-h-0 shrink text-center">
+              <div className="mt-4 overflow-hidden rounded-2xl shadow-sm sm:mt-5">
                 <img
                   src="/assets/golden-era-banner-generate.webp"
                   alt="My Golden Era — Senior Citizen Memory Experience. Honouring their stories. Celebrating their journey."
@@ -108,11 +102,11 @@ export default function GenerateLinkPage() {
                   height={241}
                   fetchPriority="high"
                   decoding="async"
-                  className="mx-auto h-auto max-h-[clamp(50px,14vh,140px)] w-auto max-w-full rounded-2xl shadow-sm"
+                  className="h-auto w-full"
                 />
               </div>
 
-              <div className="shrink-0 rounded-lg border border-slate-200 bg-white p-[clamp(0.75rem,2vh,1.75rem)]">
+              <div className="mt-4 rounded-lg border border-slate-200 bg-white p-5 sm:mt-5 sm:p-7">
                 <EmployeeDetailsForm
                   values={values}
                   errors={errors}
@@ -127,7 +121,7 @@ export default function GenerateLinkPage() {
 
       <StepIndicator
         activeStep={link ? JOURNEY_STEP_INDEX.copyOrShare : JOURNEY_STEP_INDEX.enterDetails}
-        dense
+        compact
       />
     </PageShell>
   );

@@ -19,7 +19,7 @@ export default function EmployeeDetailsForm({ values, errors, onFieldChange, onS
       exit={{ opacity: 0, x: -12 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      <form onSubmit={onSubmit} noValidate className="space-y-[clamp(0.5rem,1.6vh,1.25rem)]">
+      <form onSubmit={onSubmit} noValidate className="space-y-4 sm:space-y-5">
         {EMPLOYEE_FIELDS.map(({ name, label, placeholder }) => {
           const error = errors[name];
 
@@ -27,7 +27,7 @@ export default function EmployeeDetailsForm({ values, errors, onFieldChange, onS
             <div key={name}>
               <label
                 htmlFor={name}
-                className="mb-[clamp(0.125rem,0.5vh,0.375rem)] block text-[clamp(0.75rem,1.6vh,1rem)] font-bold text-slate-800"
+                className="mb-1.5 block text-sm font-bold text-slate-800 sm:text-base"
               >
                 {label}
               </label>
@@ -41,7 +41,7 @@ export default function EmployeeDetailsForm({ values, errors, onFieldChange, onS
                 aria-invalid={error ? 'true' : undefined}
                 aria-describedby={error ? `${name}-error` : undefined}
                 className={[
-                  'w-full rounded-lg border bg-white px-4 py-[clamp(0.5rem,1.3vh,0.875rem)] text-[clamp(0.75rem,1.6vh,1rem)] text-slate-800 outline-none transition-all placeholder:text-slate-400',
+                  'w-full rounded-lg border bg-white px-4 py-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 sm:py-3.5 sm:text-base',
                   'focus:ring-2 focus:ring-hdfc-navy/20',
                   error
                     ? 'border-hdfc-red focus:border-hdfc-red'
@@ -59,7 +59,7 @@ export default function EmployeeDetailsForm({ values, errors, onFieldChange, onS
 
         <button
           type="submit"
-          className="w-full rounded-md bg-hdfc-navy py-[clamp(0.6rem,1.6vh,1rem)] text-[clamp(0.78rem,1.7vh,1rem)] font-semibold text-white transition-colors hover:bg-hdfc-navy-dark active:scale-[0.99]"
+          className="w-full rounded-md bg-hdfc-navy py-3.5 text-sm font-semibold text-white transition-colors hover:bg-hdfc-navy-dark active:scale-[0.99] sm:py-4 sm:text-base"
         >
           Generate My Custom Link
         </button>

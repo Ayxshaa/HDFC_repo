@@ -7,14 +7,14 @@ const STEP_ICONS = [DoorOpen, User, Link2, Share2];
 
 /**
  * Icon breadcrumb of the link-generation journey.
- * @param {{ activeStep: number, compact?: boolean, dense?: boolean }} props
+ * @param {{ activeStep: number, compact?: boolean }} props
  */
-export default function StepIndicator({ activeStep, compact = false, dense = false }) {
+export default function StepIndicator({ activeStep, compact = false }) {
   return (
     <div
       className={[
-        'mx-auto flex max-w-3xl flex-wrap items-start justify-center gap-x-1 px-4 text-center sm:gap-x-3',
-        dense ? 'shrink-0 gap-y-1 py-[clamp(0.25rem,1vh,0.75rem)]' : compact ? 'shrink-0 gap-y-3 py-3' : 'gap-y-3 py-8',
+        'mx-auto flex max-w-3xl flex-wrap items-start justify-center gap-x-1 gap-y-3 px-4 text-center sm:gap-x-3',
+        compact ? 'shrink-0 py-3' : 'py-8',
       ].join(' ')}
       aria-label="Progress"
     >
@@ -29,23 +29,21 @@ export default function StepIndicator({ activeStep, compact = false, dense = fal
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index, duration: 0.4 }}
               aria-current={isActive ? 'step' : undefined}
-              className={dense ? 'flex w-12 flex-col items-center gap-1 sm:w-16' : 'flex w-14 flex-col items-center gap-1.5 sm:w-16'}
+              className="flex w-14 flex-col items-center gap-1.5 sm:w-16"
             >
               <span
                 className={[
-                  'flex items-center justify-center rounded-full border-2 transition-colors',
-                  dense ? 'h-[clamp(1.5rem,4vh,2.75rem)] w-[clamp(1.5rem,4vh,2.75rem)]' : 'h-9 w-9 sm:h-11 sm:w-11',
+                  'flex h-9 w-9 items-center justify-center rounded-full border-2 transition-colors sm:h-11 sm:w-11',
                   isActive
                     ? 'border-hdfc-navy bg-hdfc-blue-50 text-hdfc-navy'
                     : 'border-slate-200 bg-white text-slate-400',
                 ].join(' ')}
               >
-                <Icon aria-hidden="true" className={dense ? 'h-[clamp(0.75rem,1.8vh,1.25rem)] w-[clamp(0.75rem,1.8vh,1.25rem)]' : 'h-4 w-4 sm:h-5 sm:w-5'} />
+                <Icon aria-hidden="true" className="h-4 w-4 sm:h-5 sm:w-5" />
               </span>
               <span
                 className={[
-                  'font-semibold leading-tight',
-                  dense ? 'text-[clamp(8px,1.4vh,11px)]' : 'text-[10px] sm:text-xs',
+                  'text-[10px] font-semibold leading-tight sm:text-xs',
                   isActive ? 'text-hdfc-navy' : 'text-slate-400',
                 ].join(' ')}
               >
@@ -55,7 +53,7 @@ export default function StepIndicator({ activeStep, compact = false, dense = fal
             {index < JOURNEY_STEPS.length - 1 && (
               <ArrowRight
                 aria-hidden="true"
-                className={dense ? 'mt-2 h-3 w-3 shrink-0 text-slate-300' : 'mt-4 h-4 w-4 shrink-0 text-slate-300 sm:mt-5'}
+                className="mt-4 h-4 w-4 shrink-0 text-slate-300 sm:mt-5"
               />
             )}
           </div>
