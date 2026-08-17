@@ -100,11 +100,11 @@ export default function GenerateLinkPage() {
                 </p>
               </div>
 
-              <div className="min-h-0 shrink overflow-hidden rounded-2xl shadow-sm">
+              <div className="min-h-0 shrink text-center">
                 <img
                   src="/assets/golden-era-banner-generate.png"
                   alt="My Golden Era — Senior Citizen Memory Experience. Honouring their stories. Celebrating their journey."
-                  className="mx-auto h-auto max-h-[clamp(50px,14vh,140px)] w-auto max-w-full object-contain"
+                  className="mx-auto h-auto max-h-[clamp(50px,14vh,140px)] w-auto max-w-full rounded-2xl shadow-sm"
                 />
               </div>
 

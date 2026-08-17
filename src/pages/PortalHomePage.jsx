@@ -18,12 +18,12 @@ export default function PortalHomePage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="min-h-0 w-full max-w-xl shrink overflow-hidden rounded-2xl shadow-sm"
+        className="min-h-0 w-full max-w-xl shrink text-center"
       >
         <img
           src="/assets/golden-era-banner-home.png"
           alt="My Golden Era — Senior Citizen Memory Experience. Help your customers bring a special memory from their past back to life."
-          className="mx-auto h-auto max-h-[clamp(72px,22vh,220px)] w-auto max-w-full object-contain"
+          className="mx-auto h-auto max-h-[clamp(72px,22vh,220px)] w-auto max-w-full rounded-2xl shadow-sm"
         />
       </motion.div>
 
