@@ -21,7 +21,7 @@ export default function PortalHomePage() {
         className="min-h-0 w-full max-w-xl shrink text-center"
       >
         <img
-          src="/assets/golden-era-banner-home.png"
+          src="/assets/golden-era-banner-home.webp"
           alt="My Golden Era — Senior Citizen Memory Experience. Help your customers bring a special memory from their past back to life."
           className="mx-auto h-auto max-h-[clamp(72px,22vh,220px)] w-auto max-w-full rounded-2xl shadow-sm"
         />
@@ -34,7 +34,7 @@ export default function PortalHomePage() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-[clamp(1.1rem,3.2vh,2.25rem)] font-bold leading-tight text-hdfc-navy"
         >
-          My Golden Era Link Portal
+          My Golden Era AI Campaign
         </motion.h1>
         <div className="mx-auto mt-[clamp(0.25rem,0.8vh,0.75rem)] h-1 w-16 bg-hdfc-red" />
         <motion.p
@@ -74,7 +74,7 @@ export default function PortalHomePage() {
           transition={{ delay: 0.4, duration: 0.4 }}
           className="mt-[clamp(0.375rem,1.4vh,1.5rem)] text-[clamp(0.95rem,2.4vh,1.5rem)] font-bold text-hdfc-navy"
         >
-          Employee Link Portal
+          Employee Custom URL Portal
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -95,7 +95,7 @@ export default function PortalHomePage() {
           whileTap={{ scale: 0.97 }}
           className="group mt-[clamp(0.5rem,1.8vh,2rem)] inline-flex items-center justify-center gap-2 rounded-md bg-hdfc-navy px-[clamp(1rem,3vw,2rem)] py-[clamp(0.5rem,1.3vh,1rem)] text-[clamp(0.78rem,1.7vh,1rem)] font-semibold text-white transition-colors hover:bg-hdfc-navy-dark"
         >
-          Generate My Link
+          Generate My Custom Link
           <ArrowRight
             aria-hidden="true"
             className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1"

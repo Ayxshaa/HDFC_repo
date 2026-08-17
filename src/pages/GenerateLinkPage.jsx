@@ -102,7 +102,7 @@ export default function GenerateLinkPage() {
 
               <div className="min-h-0 shrink text-center">
                 <img
-                  src="/assets/golden-era-banner-generate.png"
+                  src="/assets/golden-era-banner-generate.webp"
                   alt="My Golden Era — Senior Citizen Memory Experience. Honouring their stories. Celebrating their journey."
                   className="mx-auto h-auto max-h-[clamp(50px,14vh,140px)] w-auto max-w-full rounded-2xl shadow-sm"
                 />
