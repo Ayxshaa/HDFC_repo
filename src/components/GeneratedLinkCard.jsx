@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Check, CircleCheck, Copy, RotateCcw, Share2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -6,35 +5,20 @@ import { SHARE_TITLE } from '../lib/constants.js';
 
 /**
  * Success state showing the generated trackable link with copy/share actions.
- * Copy/share always use the shortened link; the full tracking URL stays
- * available behind a toggle for verification.
  * @param {{
  *   link: string,
- *   shortLink: string | null,
- *   isShortening: boolean,
  *   copied: boolean,
  *   onCopy: () => void,
  *   onReset: () => void,
  * }} props
  */
-export default function GeneratedLinkCard({
-  link,
-  shortLink,
-  isShortening,
-  copied,
-  onCopy,
-  onReset,
-}) {
-  const [showFull, setShowFull] = useState(false);
-  const shareLink = shortLink ?? link;
-  const displayedLink = showFull ? link : shareLink;
-
+export default function GeneratedLinkCard({ link, copied, onCopy, onReset }) {
   const handleShare = async () => {
-    if (!shareLink) return;
+    if (!link) return;
 
     if (navigator.share) {
       try {
-        await navigator.share({ title: SHARE_TITLE, url: shareLink });
+        await navigator.share({ title: SHARE_TITLE, url: link });
       } catch {
         /* user dismissed the share sheet */
       }
@@ -71,17 +55,16 @@ export default function GeneratedLinkCard({
       <div className="mt-4 flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-left sm:mt-5">
         <input
           readOnly
-          value={displayedLink}
-          aria-label={showFull ? 'Full tracking link' : 'Shortened trackable link'}
+          value={link}
+          aria-label="Trackable link"
           onFocus={(event) => event.target.select()}
           className="w-full truncate bg-transparent text-xs text-slate-700 outline-none sm:text-sm"
         />
         <button
           type="button"
           onClick={onCopy}
-          disabled={isShortening}
           aria-label="Copy link"
-          className="shrink-0 rounded-md p-1.5 text-hdfc-navy transition-colors hover:bg-hdfc-blue-100 disabled:opacity-40"
+          className="shrink-0 rounded-md p-1.5 text-hdfc-navy transition-colors hover:bg-hdfc-blue-100"
         >
           {copied ? (
             <Check aria-hidden="true" className="h-4 w-4 text-emerald-600" />
@@ -91,42 +74,28 @@ export default function GeneratedLinkCard({
         </button>
       </div>
 
-      <button
-        type="button"
-        onClick={() => setShowFull((previous) => !previous)}
-        className="mt-2 text-[11px] font-medium text-slate-400 hover:text-hdfc-navy sm:text-xs"
-      >
-        {isShortening
-          ? 'Shortening link…'
-          : showFull
-            ? 'Hide full tracking link'
-            : 'View full tracking link'}
-      </button>
-
       <div className="mt-3 flex flex-col gap-2 sm:mt-4 sm:flex-row sm:gap-3">
         <motion.button
           type="button"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onCopy}
-          disabled={isShortening}
-          className="flex flex-1 items-center justify-center gap-2 rounded-md bg-hdfc-navy py-2.5 text-sm font-semibold text-white transition-colors hover:bg-hdfc-navy-dark disabled:opacity-50"
+          className="flex flex-1 items-center justify-center gap-2 rounded-md bg-hdfc-navy py-2.5 text-sm font-semibold text-white transition-colors hover:bg-hdfc-navy-dark"
         >
           {copied ? (
             <Check aria-hidden="true" className="h-4 w-4" />
           ) : (
             <Copy aria-hidden="true" className="h-4 w-4" />
           )}
-          {isShortening ? 'Preparing…' : copied ? 'Copied!' : 'Copy Link'}
+          {copied ? 'Copied!' : 'Copy Link'}
         </motion.button>
 
         <motion.button
           type="button"
-          disabled={isShortening}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleShare}
-          className="flex flex-1 items-center justify-center gap-2 rounded-md border border-hdfc-navy py-2.5 text-sm font-semibold text-hdfc-navy transition-colors hover:bg-hdfc-blue-50 disabled:opacity-50"
+          className="flex flex-1 items-center justify-center gap-2 rounded-md border border-hdfc-navy py-2.5 text-sm font-semibold text-hdfc-navy transition-colors hover:bg-hdfc-blue-50"
         >
           <Share2 aria-hidden="true" className="h-4 w-4" />
           Share Link

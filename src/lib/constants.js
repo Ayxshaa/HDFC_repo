@@ -64,8 +64,5 @@ export const EMPTY_EMPLOYEE_FORM = EMPLOYEE_FIELDS.reduce(
 /** Copy used on the share sheet when the Web Share API is available. */
 export const SHARE_TITLE = 'My HDFC Bank campaign link';
 
-/** Base URL of the link-shortener API (Express server in /server). */
-export const SHORTENER_API_URL = import.meta.env.VITE_SHORTENER_API_URL || 'http://localhost:3001';
-
 /** How long the "Copied!" confirmation stays visible (ms). */
 export const COPY_FEEDBACK_DURATION = 2000;

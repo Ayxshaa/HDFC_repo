@@ -26,8 +26,8 @@ npm run dev      # http://localhost:5173 (or next free port)
 npm run build    # production build in dist/
 ```
 
-No backend is required — link shortening calls the public TinyURL API directly
-from the browser (see [Link shortening](#link-shortening)).
+No backend is required — the portal is a static frontend that builds and
+displays the full trackable URL directly.
 
 ## Structure
 
@@ -52,11 +52,6 @@ src/
     └── GenerateLinkPage.jsx     # form ⇄ generated-link state machine
 ```
 
-`server/` contains an earlier self-hosted Express shortener (nanoid code + JSON-file
-store + redirect) kept for reference. It's currently unused — the app calls TinyURL
-directly instead — but is a drop-in swap if you want a branded/self-hosted short
-domain later: point `src/lib/shortenLink.js` at `POST /api/shorten` on that server.
-
 ## Design tokens (`src/index.css`)
 
 | Token                     | Value     |
@@ -77,27 +72,6 @@ Custom animations: `animate-float` (6s ease-in-out) and `animate-pulse-ring` (2.
 https://campaign.com/experience?employee_code=<code>&branch_code=<branch>&employee_name=<name>
 ```
 
-The base URL lives in `src/lib/constants.js` (`CAMPAIGN_BASE_URL`).
-
-## Link shortening
-
-The full tracking URL (with UTM + LGCode/BCode/BRCode/LCCode params) is what
-actually gets attribution, but it's long and unfriendly to share. On generation,
-`src/lib/shortenLink.js` calls the public da.gd shortener API
-(`https://da.gd/shorten?url=<encoded>`) directly from the browser — it responds
-with `Access-Control-Allow-Origin: *`, so no backend/proxy is needed to read the
-response.
-
-da.gd was chosen over TinyURL/v.gd specifically because it 302-redirects straight
-to the destination with **no "are you sure you want to continue?" interstitial**
-— those free shorteners show a warning page by default, which is a dealbreaker
-for a customer-facing bank campaign link.
-
-The **Copy Link** / **Share Link** buttons always use the short URL. The full
-tracking URL stays visible behind a "View full tracking link" toggle on the
-generated-link card for verification. If da.gd is unreachable, `shortenLink()`
-falls back to the full URL so link generation never breaks.
-
-Trade-off: da.gd is still a third-party, unbranded domain — fine for a demo, but
-worth revisiting `server/` (self-hosted, own domain) before a real production
-rollout to bank customers.
+The base URL lives in `src/lib/constants.js` (`CAMPAIGN_BASE_URL`). The
+**Copy Link** / **Share Link** buttons use this full trackable URL directly —
+no shortening step.

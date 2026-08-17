@@ -9,7 +9,6 @@ import PageShell from '../components/PageShell.jsx';
 import StepIndicator from '../components/StepIndicator.jsx';
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard.js';
 import { EMPTY_EMPLOYEE_FORM, JOURNEY_STEP_INDEX, ROUTES } from '../lib/constants.js';
-import { shortenLink } from '../lib/shortenLink.js';
 import { buildTrackableLink, validateEmployeeForm } from '../lib/trackableLink.js';
 
 export default function GenerateLinkPage() {
@@ -17,8 +16,6 @@ export default function GenerateLinkPage() {
   const [values, setValues] = useState(EMPTY_EMPLOYEE_FORM);
   const [errors, setErrors] = useState({});
   const [link, setLink] = useState(null);
-  const [shortLink, setShortLink] = useState(null);
-  const [isShortening, setIsShortening] = useState(false);
   const { copied, copy, reset: resetCopied } = useCopyToClipboard();
 
   const handleFieldChange = useCallback(
@@ -30,7 +27,7 @@ export default function GenerateLinkPage() {
     [],
   );
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const validationErrors = validateEmployeeForm(values);
@@ -41,21 +38,13 @@ export default function GenerateLinkPage() {
 
     const fullLink = buildTrackableLink(values);
     setLink(fullLink);
-    setShortLink(null);
     resetCopied();
-
-    setIsShortening(true);
-    const shortened = await shortenLink(fullLink);
-    setShortLink(shortened);
-    setIsShortening(false);
   };
 
-  const handleCopy = () => copy(shortLink ?? link);
+  const handleCopy = () => copy(link);
 
   const handleReset = () => {
     setLink(null);
-    setShortLink(null);
-    setIsShortening(false);
     resetCopied();
   };
 
@@ -85,8 +74,6 @@ export default function GenerateLinkPage() {
               <GeneratedLinkCard
                 key="success"
                 link={link}
-                shortLink={shortLink}
-                isShortening={isShortening}
                 copied={copied}
                 onCopy={handleCopy}
                 onReset={handleReset}
